@@ -1,0 +1,67 @@
+/* ===== foundation / _base.scss ===== */
+@use "./function" as f;
+@use "./vars" as v;
+@use "./mixin" as m;
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    font-family: v.$font-family-base;
+    font-size: f.rem(v.$font-size-base);
+    font-weight: v.$font-weight-base;
+    line-height: v.$line-height-body;
+    color: v.$color-text-main;
+    background-color: v.$color-bg-base;
+
+    // フォントのレンダリングを最適化
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    @include m.hover {
+        opacity: 0.7;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+picture {
+    display: block;
+}
+
+button {
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+// サイト内のすべてのインタラクティブ要素に対して共通のフォーカス環を設定
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+// マウス操作時はフォーカス環を出さない
+:focus:not(:focus-visible) {
+    outline: none;
+}

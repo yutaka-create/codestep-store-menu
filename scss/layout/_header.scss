@@ -1,0 +1,79 @@
+/* ===== layout / _header.scss ===== */
+@use "../foundation/vars" as v;
+@use "../foundation/mixin" as m;
+
+// ==============================
+// Local variables
+// ==============================
+
+// body
+$header-body-top-pc: 60px;
+$header-body-right-pc: 80px;
+$header-body-top-sp: 20px;
+$header-body-right-sp: 20px;
+$header-body-gap: 60px;
+
+// logo
+$header-logo-width: 40px;
+
+// store link
+$header-store-link-left-pc: 40px;
+$header-store-link-bottom-pc: 30px;
+$header-store-link-left-sp: 20px;
+$header-store-link-bottom-sp: 20px;
+
+.l-header {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    background-image: url("../img/mv-pc.jpg");
+    background-image: image-set(
+        url("../img/mv-pc.webp") type("image/webp"),
+        url("../img/mv-pc.jpg") type("image/jpeg")
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: v.$color-text-inverse;
+
+    @include m.mq-sp {
+        background-image: url("../img/mv-sp.jpg");
+        background-image: image-set(
+            url("../img/mv-sp.webp") type("image/webp"),
+            url("../img/mv-sp.jpg") type("image/jpeg")
+        );
+    }
+
+    &__body {
+        position: absolute;
+        top: $header-body-top-pc;
+        right: $header-body-right-pc;
+        z-index: v.$z-index-header-content;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: $header-body-gap;
+
+        @include m.mq-sp {
+            top: $header-body-top-sp;
+            right: $header-body-right-sp;
+        }
+    }
+
+    &__logo {
+        width: $header-logo-width;
+    }
+
+    &__store-link.c-store-link {
+        position: absolute;
+        left: $header-store-link-left-pc;
+        bottom: $header-store-link-bottom-pc;
+        z-index: v.$z-index-header-content;
+
+        @include m.mq-sp {
+            left: $header-store-link-left-sp;
+            bottom: $header-store-link-bottom-sp;
+        }
+    }
+}

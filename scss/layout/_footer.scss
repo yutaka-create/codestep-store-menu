@@ -1,0 +1,129 @@
+/* ===== layout / _footer.scss ===== */
+
+@use "../foundation/function" as f;
+@use "../foundation/vars" as v;
+@use "../foundation/mixin" as m;
+
+// ==============================
+// Local variables
+// ==============================
+
+// layout - PC
+$footer-padding-top-pc: 80px;
+$footer-padding-right-pc: 80px;
+$footer-padding-bottom-pc: 30px;
+$footer-padding-left-pc: 30px;
+$footer-inner-margin-bottom-pc: 10px;
+$footer-body-gap-pc: 60px;
+
+// layout - SP
+$footer-padding-top-sp: 40px;
+$footer-padding-right-sp: 20px;
+$footer-padding-bottom-sp: 30px;
+$footer-padding-left-sp: 20px;
+$footer-body-gap-sp: 25px;
+
+// logo
+$footer-logo-width: 40px;
+
+// link
+$footer-link-separator-width: 14px;
+$footer-link-separator-height: 1px;
+$footer-link-separator-margin-before: 9px;
+$footer-link-separator-margin-after: 3px;
+
+// address
+$footer-tel-margin-right: 14px;
+
+// ==============================
+// Footer
+// ==============================
+
+.l-footer {
+    color: v.$color-text-inverse;
+    background-color: v.$color-bg-dark;
+    padding: $footer-padding-top-pc $footer-padding-right-pc $footer-padding-bottom-pc $footer-padding-left-pc;
+
+    @include m.mq-sp {
+        padding: $footer-padding-top-sp $footer-padding-right-sp $footer-padding-bottom-sp $footer-padding-left-sp;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: $footer-inner-margin-bottom-pc;
+    }
+
+    &__links {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    &__link-item+&__link-item {
+        &::before {
+            content: "";
+            display: inline-block;
+            width: $footer-link-separator-width;
+            height: $footer-link-separator-height;
+            margin-inline-start: $footer-link-separator-margin-before;
+            margin-inline-end: $footer-link-separator-margin-after;
+            background-color: currentColor;
+        }
+    }
+
+    &__link {
+        font-size: f.rem(v.$font-size-14);
+        font-weight: v.$font-weight-medium;
+        line-height: v.$line-height-body;
+    }
+
+    &__body {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: $footer-body-gap-pc;
+
+        @include m.mq-sp {
+            gap: $footer-body-gap-sp;
+        }
+    }
+
+    &__logo {
+        width: $footer-logo-width;
+    }
+
+    &__address {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        font-size: f.rem(v.$font-size-14);
+        font-weight: v.$font-weight-medium;
+        line-height: v.$line-height-body;
+    }
+
+    // 郵便番号と住所は、カンプ通り同じ縦列に続けて表示するため inline のままにする
+    &__postal-code,
+    &__address-text {
+        display: inline;
+    }
+
+    // 電話番号だけ別の縦列にする
+    &__tel {
+        display: block;
+        margin-right: $footer-tel-margin-right;
+    }
+
+    &__copyright {
+        text-align: center;
+    }
+
+    &__copyright-text {
+        font-size: f.rem(v.$font-size-10);
+        font-weight: v.$font-weight-base;
+        line-height: v.$line-height-normal;
+    }
+}

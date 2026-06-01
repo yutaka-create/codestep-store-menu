@@ -1,0 +1,154 @@
+/* ===== object / project / _news.scss ===== */
+@use "../../foundation/function" as f;
+@use "../../foundation/vars" as v;
+@use "../../foundation/mixin" as m;
+
+// ==============================
+// Local variables
+// ==============================
+
+// section
+$news-padding-block-pc: 180px;
+$news-padding-block-sp: 80px;
+$news-bg-color: v.$color-bg-base;
+
+// layout
+$news-inner-gap-pc: 100px;
+$news-inner-gap-sp: 30px;
+
+// heading
+$news-heading-en-font-size: v.$font-size-14;
+$news-heading-en-margin-left: 15px;
+
+$news-heading-ja-font-size-pc: 36px;
+// Figma PC: font-size 36px / line-height 40px
+$news-heading-ja-line-height-pc: 1.1111;
+
+$news-heading-ja-font-size-sp: 28px;
+// Figma SP: font-size 28px / line-height 31px
+$news-heading-ja-line-height-sp: 1.107;
+
+// list
+// Figma PC: heading top と news list top の差分 80px
+$news-list-margin-top-pc: 80px;
+$news-list-margin-top-sp: 20px;
+
+$news-link-padding-block-pc: 15px;
+$news-link-padding-inline-pc: 30px;
+$news-link-padding-block-sp: 15px;
+$news-link-padding-inline-sp: 12px;
+
+$news-border-color: v.$color-black;
+
+// text
+$news-date-font-size: v.$font-size-12;
+$news-date-margin-left: 5px;
+$news-title-font-size: v.$font-size-base;
+
+.p-news {
+    padding-block: $news-padding-block-pc;
+    background-color: $news-bg-color;
+
+    @include m.mq-sp {
+        padding-block: $news-padding-block-sp;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: $news-inner-gap-pc;
+
+        @include m.mq-sp {
+            gap: $news-inner-gap-sp;
+        }
+    }
+
+    &__heading {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        color: v.$color-text-main;
+    }
+
+    &__heading-en,
+    &__heading-ja {
+        display: block;
+    }
+
+    &__heading-en {
+        margin-left: $news-heading-en-margin-left;
+        font-size: f.rem($news-heading-en-font-size);
+        font-weight: v.$font-weight-regular;
+        line-height: v.$line-height-none;
+    }
+
+    &__heading-ja {
+        font-size: f.rem($news-heading-ja-font-size-pc);
+        font-weight: v.$font-weight-medium;
+        line-height: $news-heading-ja-line-height-pc;
+
+        @include m.mq-sp {
+            font-size: f.rem($news-heading-ja-font-size-sp);
+            line-height: $news-heading-ja-line-height-sp;
+        }
+    }
+
+    &__list {
+        margin-top: $news-list-margin-top-pc;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+
+        @include m.mq-sp {
+            margin-top: $news-list-margin-top-sp;
+        }
+    }
+
+    &__item {
+        border-right: 1px solid $news-border-color;
+
+        &:last-child {
+            border-left: 1px solid $news-border-color;
+        }
+
+        // SPでは3件表示のため、表示上の最後である3件目に終端の罫線を追加
+        @include m.mq-sp {
+            &:nth-child(3) {
+                border-left: 1px solid $news-border-color;
+            }
+        }
+    }
+
+    &__item--pc-only {
+        @include m.mq-sp {
+            display: none;
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: $news-link-padding-block-pc $news-link-padding-inline-pc;
+        color: v.$color-text-main;
+
+        @include m.mq-sp {
+            padding: $news-link-padding-block-sp $news-link-padding-inline-sp;
+        }
+    }
+
+    &__date,
+    &__title {
+        display: block;
+    }
+
+    &__date {
+        margin-left: $news-date-margin-left;
+        font-size: f.rem($news-date-font-size);
+        font-weight: v.$font-weight-regular;
+        line-height: v.$line-height-none;
+    }
+
+    &__title {
+        font-size: f.rem($news-title-font-size);
+        font-weight: v.$font-weight-medium;
+        line-height: v.$line-height-none;
+    }
+}

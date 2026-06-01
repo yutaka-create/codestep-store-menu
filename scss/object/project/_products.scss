@@ -1,0 +1,150 @@
+/* ===== object / project / _products.scss ===== */
+@use "../../foundation/function" as f;
+@use "../../foundation/vars" as v;
+@use "../../foundation/mixin" as m;
+
+// ==============================
+// Local variables
+// ==============================
+
+// section
+$products-section-margin-bottom-pc: 180px;
+$products-section-margin-bottom-sp: 100px;
+
+// layout
+$products-inner-gap-pc: 20px;
+$products-inner-gap-sp: 10px;
+
+// item
+$products-item-width-pc: 639px;
+$products-item-width-sp: 89.85%;
+$products-item-aspect-ratio: 639 / 426;
+
+// caption
+// Figma PC: 358px × 146px
+// min-heightでカンプ上の高さを確保しつつ、テキスト増加時は高さが伸びるようにする
+$products-caption-width-pc: 358px;
+$products-caption-width-sp: 57.313%;
+$products-caption-min-height-pc: 146px;
+$products-caption-min-height-sp: 100px;
+$products-caption-padding-pc: 50px;
+$products-caption-padding-sp: 30px;
+
+// caption offset
+// PC/SP共通：画像から上下左右に20pxはみ出す
+// 垂直方向・水平方向は将来別々に変更される可能性があるため分けて管理
+$products-caption-offset-vertical: 20px;
+$products-caption-offset-horizontal: 20px;
+
+$products-caption-z-index: 10;
+$products-caption-bg-creation: rgba(249, 233, 6, 0.6);
+$products-caption-bg-science: rgba(149, 42, 38, 0.6);
+
+// text
+$products-text-font-size-pc: v.$font-size-16;
+$products-text-font-size-sp: v.$font-size-14;
+$products-text-font-weight: v.$font-weight-medium;
+$products-text-line-height-pc: 1.4375;
+$products-text-line-height-sp: 1.42857;
+
+.p-products {
+    margin-bottom: $products-section-margin-bottom-pc;
+
+    @include m.mq-sp {
+        margin-bottom: $products-section-margin-bottom-sp;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: flex-start;
+        gap: $products-inner-gap-pc;
+
+        @include m.mq-sp {
+            gap: $products-inner-gap-sp;
+        }
+    }
+
+    &__heading {
+        flex: 0 0 auto;
+    }
+
+    &__item {
+        flex: 0 0 auto;
+        position: relative;
+        width: $products-item-width-pc;
+        aspect-ratio: $products-item-aspect-ratio;
+
+        @include m.mq-sp {
+            flex: 0 1 $products-item-width-sp;
+            width: $products-item-width-sp;
+        }
+    }
+
+    &__media {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    &__picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__caption {
+        position: absolute;
+        bottom: -$products-caption-offset-vertical;
+        z-index: $products-caption-z-index;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $products-caption-width-pc;
+        min-height: $products-caption-min-height-pc;
+        padding: $products-caption-padding-pc;
+        text-align: center;
+        color: v.$color-text-inverse;
+
+        @include m.mq-sp {
+            width: $products-caption-width-sp;
+            min-height: $products-caption-min-height-sp;
+            padding: $products-caption-padding-sp;
+        }
+    }
+
+    &__text {
+        font-size: f.rem($products-text-font-size-pc);
+        font-weight: $products-text-font-weight;
+        line-height: $products-text-line-height-pc;
+
+        @include m.mq-sp {
+            font-size: f.rem($products-text-font-size-sp);
+            line-height: $products-text-line-height-sp;
+        }
+    }
+
+    &--creation {
+        .p-products__inner {
+            flex-direction: row-reverse;
+        }
+
+        .p-products__caption {
+            left: -$products-caption-offset-horizontal;
+            background-color: $products-caption-bg-creation;
+        }
+    }
+
+    &--science {
+        .p-products__caption {
+            right: -$products-caption-offset-horizontal;
+            background-color: $products-caption-bg-science;
+        }
+    }
+}

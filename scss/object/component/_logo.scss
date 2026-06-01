@@ -1,0 +1,17 @@
+/* ===== object / component / _logo.scss ===== */
+
+.c-logo {
+  display: block;
+  line-height: 1;
+
+  &__link {
+    display: block;
+    color: inherit;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

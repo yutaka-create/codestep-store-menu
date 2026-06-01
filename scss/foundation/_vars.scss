@@ -1,0 +1,112 @@
+/* ===== foundation / _vars.scss ===== */
+
+// ==============================
+// Color
+// ==============================
+
+// primitive colors
+$color-white: #fff;
+$color-white-alpha-20: rgba(255, 255, 255, 0.2);
+$color-black: #000;
+$color-beige: #e6e2d7;
+
+// semantic colors
+$color-text-main: $color-black;
+$color-text-inverse: $color-white;
+$color-bg-base: $color-beige;
+$color-bg-dark: $color-black;
+$color-border-light: $color-white;
+$color-border-light-alpha: $color-white-alpha-20;
+
+
+// ==============================
+// Font Family
+// ==============================
+
+$font-family-base: "Noto Serif JP", serif;
+
+
+// ==============================
+// Font Size Primitive
+// ==============================
+
+$font-size-10: 10px;
+$font-size-12: 12px;
+$font-size-14: 14px;
+$font-size-16: 16px;
+$font-size-24: 24px;
+$font-size-28: 28px;
+$font-size-32: 32px;
+
+// ==============================
+// Font Size Semantic
+// ==============================
+
+$font-size-base: $font-size-16;
+
+
+// ==============================
+// Font Weight Primitive
+// ==============================
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+
+// ==============================
+// Font Weight Semantic
+// ==============================
+
+$font-weight-base: $font-weight-regular;
+
+
+// ==============================
+// Line Height Primitive
+// ==============================
+
+$line-height-none: 1;
+$line-height-tight: 1.1;
+$line-height-normal: 1.4;
+
+// ==============================
+// Line Height Semantic
+// ==============================
+
+$line-height-body: $line-height-none;
+
+
+// ==============================
+// Spacing Primitive
+// ==============================
+
+$space-20: 20px;
+$space-30: 30px;
+$space-60: 60px;
+
+
+// ==============================
+// Layout Primitive
+// ==============================
+
+$layout-width-1024: 1024px;
+
+// ==============================
+// Layout Semantic
+// ==============================
+
+$layout-container-max: $layout-width-1024;
+$layout-container-padding-inline: $space-20;
+
+
+// ==============================
+// Breakpoint
+// ==============================
+
+$breakpoint-sp: 768px;
+
+
+// ==============================
+// z-index
+// ==============================
+
+$z-index-header-content: 10;
+$z-index-page-top: 100;

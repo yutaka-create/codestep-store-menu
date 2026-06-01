@@ -1,0 +1,37 @@
+/* ===== object / component / _store-link.scss ===== */
+@use "../../foundation/function" as f;
+@use "../../foundation/vars" as v;
+
+// ==============================
+// Local variables
+// ==============================
+
+$store-link-width: 68px;
+$store-link-height: 252px;
+$store-link-padding: 8px;
+$store-link-border-color: #ccc;
+
+.c-store-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $store-link-width;
+    height: $store-link-height;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+    font-size: f.rem(v.$font-size-16);
+    font-weight: v.$font-weight-regular;
+    line-height: v.$line-height-none;
+    color: v.$color-text-inverse;
+    background-color: v.$color-white-alpha-20;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: $store-link-padding;
+        border: 1px solid $store-link-border-color;
+        pointer-events: none;
+    }
+}

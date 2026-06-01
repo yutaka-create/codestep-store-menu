@@ -1,0 +1,46 @@
+/* ===== object / component / _global-nav.scss ===== */
+@use "../../foundation/function" as f;
+@use "../../foundation/vars" as v;
+@use "../../foundation/mixin" as m;
+
+// ==============================
+// Local variables
+// ==============================
+
+$global-nav-gap-pc: 25px;
+$global-nav-gap-footer-sp: 10px;
+
+.c-global-nav {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: inherit;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: $global-nav-gap-pc;
+    }
+
+    &__link {
+        display: block;
+        font-size: f.rem(v.$font-size-16);
+        font-weight: v.$font-weight-regular;
+        line-height: v.$line-height-none;
+    }
+
+    &--footer {
+        .c-global-nav__link {
+            font-weight: v.$font-weight-medium;
+        }
+
+        @include m.mq-sp {
+            .c-global-nav__list {
+                gap: $global-nav-gap-footer-sp;
+            }
+
+            .c-global-nav__link {
+                font-size: f.rem(v.$font-size-14);
+            }
+        }
+    }
+}
