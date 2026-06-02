@@ -58,6 +58,7 @@ $products-text-line-height-sp: 1.42857;
         display: flex;
         align-items: flex-start;
         gap: $products-inner-gap-pc;
+        overflow-x: clip;
 
         @include m.mq-sp {
             gap: $products-inner-gap-sp;
